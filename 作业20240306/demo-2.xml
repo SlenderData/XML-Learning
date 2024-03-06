@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<employees>
+    <employee id="1">
+        <name>艾斌</name>
+        <age>20</age>
+        <sex>女</sex>
+        <address>湖北省杭州市吉区西宁路b座 888722</address>
+    </employee>
+    <employee id="2">
+        <name>张玉兰</name>
+        <age>22</age>
+        <sex>男</sex>
+        <address>河南省淑珍县平山陈路R座 347782</address>
+    </employee>
+    <employee id="3">
+        <name>雷小红</name>
+        <age>25</age>
+        <sex>女</sex>
+        <address>黑龙江省深圳市牧野李街p座 717598</address>
+    </employee>
+    <employee id="4">
+        <name>李凯</name>
+        <age>23</age>
+        <sex>女</sex>
+        <address>海南省畅市滨城王街W座 197705</address>
+    </employee>
+    <employee id="5">
+        <name>赵桂兰</name>
+        <age>22</age>
+        <sex>女</sex>
+        <address>宁夏回族自治区哈尔滨县锡山永安路Q座 420834</address>
+    </employee>
+    <employee id="6">
+        <name>王淑兰</name>
+        <age>26</age>
+        <sex>男</sex>
+        <address>吉林省杰县西夏张路A座 574706</address>
+    </employee>
+    <employee id="7">
+        <name>董桂香</name>
+        <age>20</age>
+        <sex>男</sex>
+        <address>湖北省玉市房山沈阳街v座 870350</address>
+    </employee>
+    <employee id="8">
+        <name>杨桂芳</name>
+        <age>27</age>
+        <sex>女</sex>
+        <address>北京市齐齐哈尔县大东大冶街y座 639375</address>
+    </employee>
+    <employee id="9">
+        <name>许平</name>
+        <age>20</age>
+        <sex>男</sex>
+        <address>甘肃省佛山市长寿佛山路A座 794611</address>
+    </employee>
+    <employee id="10">
+        <name>沙玉华</name>
+        <age>27</age>
+        <sex>男</sex>
+        <address>宁夏回族自治区利市翔安杨路E座 446488</address>
+    </employee>
+</employees>

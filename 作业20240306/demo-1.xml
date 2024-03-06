@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<book>
+    <title>XML 指南</title>
+    <chapter>
+        <number>1</number>
+        <title>XML 入门简介</title>
+        <section>
+            <number>1.1</number>
+            <title>什么是 HTML</title>
+        </section>
+        <section>
+            <number>1.2</number>
+            <title>什么是 XML</title>
+        </section>
+    </chapter>
+    <chapter>
+        <number>2</number>
+        <title>XML 语法</title>
+        <section>
+            <number>2.1</number>
+            <title>XML 元素必须有结束标签</title>
+        </section>
+        <section>
+            <number>2.2</number>
+            <title>XML 元素必须正确地嵌套</title>
+        </section>
+    </chapter>
+</book>

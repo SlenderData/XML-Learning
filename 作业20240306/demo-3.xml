@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<course>
+    <student number="1">
+        <name>林桂珍</name>
+        <score>63</score>
+    </student>
+    <student number="2">
+        <name>张淑英</name>
+        <score>62</score>
+    </student>
+    <student number="3">
+        <name>杜红梅</name>
+        <score>58</score>
+    </student>
+    <student number="4">
+        <name>杨莹</name>
+        <score>77</score>
+    </student>
+    <student number="5">
+        <name>张旭</name>
+        <score>80</score>
+    </student>
+    <student number="6">
+        <name>任宇</name>
+        <score>50</score>
+    </student>
+    <student number="7">
+        <name>陈洁</name>
+        <score>90</score>
+    </student>
+    <student number="8">
+        <name>刘英</name>
+        <score>67</score>
+    </student>
+    <student number="9">
+        <name>丁建平</name>
+        <score>96</score>
+    </student>
+    <student number="10">
+        <name>孙建华</name>
+        <score>57</score>
+    </student>
+</course>
