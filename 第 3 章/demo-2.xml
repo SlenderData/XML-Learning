@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE NEWSPAPER SYSTEM "demo-2.dtd">
+<NEWSPAPER>
+    <ARTICLE>
+        <HEADLINE>XML</HEADLINE>
+        <AUTHOR>John Smith</AUTHOR>
+        <DATE>2000-12-12</DATE>
+        <BODY>
+            <P>XML is a markup language that defines a set of rules for encoding documents in a format that is both
+                human-readable and machine-readable.
+            </P>
+        </BODY>
+    </ARTICLE>
+    <ARTICLE>
+        <HEADLINE>XML Schema</HEADLINE>
+        <AUTHOR>Jane Doe</AUTHOR>
+        <DATE>2000-12-12</DATE>
+        <BODY>
+            <P>XML Schema is an XML-based alternative to DTD.</P>
+        </BODY>
+    </ARTICLE>
+</NEWSPAPER>
