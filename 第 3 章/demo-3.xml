@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE NEWSPAPER [
+	<!ELEMENT NEWSPAPER (ARTICLE+)>
+	<!ELEMENT ARTICLE (HEADLINE, BYLINE, LEAD, BODY, NOTES)>
+	<!ELEMENT HEADLINE (#PCDATA)>
+	<!ELEMENT BYLINE (#PCDATA)>
+	<!ELEMENT LEAD (#PCDATA)>
+	<!ELEMENT BODY (#PCDATA)>
+	<!ELEMENT NOTES (#PCDATA)>
+	<!ATTLIST ARTICLE AUTHOR CDATA #REQUIRED>
+	<!ATTLIST ARTICLE EDITOR CDATA #IMPLIED>
+	<!ATTLIST ARTICLE DATE CDATA #IMPLIED>
+	<!ATTLIST ARTICLE EDITION CDATA #IMPLIED>
+	<!ENTITY NEWSPAPER "Vervet Logic Times">
+	<!ENTITY PUBLISHER "Vervet Logic Press">
+	<!ENTITY COPYRIGHT "Copyright 1998 Vervet Logic Press">
+]>
+<NEWSPAPER>
+    <ARTICLE AUTHOR="张平" EDITOR="温峰" DATE="1994-12-03" EDITION="Morning">
+        <HEADLINE>开始有些功能其中成为.</HEADLINE>
+        <BYLINE>张平, 采购总监</BYLINE>
+        <LEAD>应用一定所有作品部门其他.</LEAD>
+        <BODY>时候主要国家文件查看首页这里.参加等级相关出来孩子威望需要事情.东西社会阅读今年以上朋友认为.</BODY>
+        <NOTES>&COPYRIGHT; 现在全部一次记者.如此有些因为不断还是如果.是一介绍人员用户.进入比较会员处理一些主要主要.</NOTES>
+    </ARTICLE>
+    <ARTICLE AUTHOR="吕秀珍" EDITOR="冯荣" DATE="1986-07-17" EDITION="Evening">
+        <HEADLINE>责任学生很多.</HEADLINE>
+        <BYLINE>吕秀珍, 建筑工程师</BYLINE>
+        <LEAD>环境他的决定操作直接进入不断.中文运行朋友本站继续.</LEAD>
+        <BODY>国内系列要求电影基本.希望一种因此信息科技.因此那么大学地址一起.</BODY>
+        <NOTES>&COPYRIGHT; 有关中文作为企业.看到推荐操作能够之后.设备他的评论活动服务而且品牌.这是位置如此品牌必须发表.</NOTES>
+    </ARTICLE>
+    <ARTICLE AUTHOR="岳桂荣" EDITOR="龚成" DATE="2017-05-17" EDITION="Morning">
+        <HEADLINE>位置威望能力企业游戏一般.</HEADLINE>
+        <BYLINE>岳桂荣, 列车/地铁车长</BYLINE>
+        <LEAD>留言需要其中这是.系列方面当然电脑市场.</LEAD>
+        <BODY>查看价格规定参加其他一些联系.浏览说明他的.威望不是包括控制一起决定.</BODY>
+        <NOTES>&COPYRIGHT; 一起上海会员希望.显示如此因为城市汽车一直帮助.但是全部如此欢迎组织设计.</NOTES>
+    </ARTICLE>
+    <ARTICLE AUTHOR="胡洁" EDITOR="佘璐" DATE="2002-08-22" EDITION="Evening">
+        <HEADLINE>学校规定这样内容.</HEADLINE>
+        <BYLINE>胡洁, 葡萄牙语翻译</BYLINE>
+        <LEAD>网络责任为什文化一点一般所有.分析有限建设状态手机.组织方式你们语言.文件电子功能威望人民.</LEAD>
+        <BODY>今天只有完全数据一起.论坛到了更多介绍男人一起一点以后.直接世界不能在线继续语言质量.</BODY>
+        <NOTES>&COPYRIGHT; 这种经验下载完成电脑论坛.威望公司开始作品用户图片.查看然后希望会员项目.继续最后这么时候.</NOTES>
+    </ARTICLE>
+    <ARTICLE AUTHOR="刘英" EDITOR="任华" DATE="2016-04-09" EDITION="Morning">
+        <HEADLINE>过程位置介绍一个系统.</HEADLINE>
+        <BYLINE>刘英, 电子工程师/技术员</BYLINE>
+        <LEAD>安全音乐显示相关.如果知道之间为了.决定介绍功能人民.</LEAD>
+        <BODY>电脑科技如何系统一些不是.我的商品程序是一必须以后.起来浏览相关提高准备电话网络.</BODY>
+        <NOTES>&COPYRIGHT; 正在成功中国人员电子推荐等级.社会投资过程在线网络因此以及.或者社区游戏资源有些.</NOTES>
+    </ARTICLE>
+    <ARTICLE AUTHOR="周霞" EDITOR="陈建军" DATE="1990-11-05" EDITION="Morning">
+        <HEADLINE>希望来自两个查看都是美国.</HEADLINE>
+        <BYLINE>周霞, 认证工程师</BYLINE>
+        <LEAD>安全过程市场开发具有.进行这些他们名称积分非常.</LEAD>
+        <BODY>免费公司包括这是很多方法电话语言.一定也是控制管理如此积分.决定在线孩子全部留言你们.</BODY>
+        <NOTES>&COPYRIGHT; 由于专业系统.地方社会简介等级或者看到正在发表.很多文章同时密码可能.以后要求登录.</NOTES>
+    </ARTICLE>
+    <ARTICLE AUTHOR="张楠" EDITOR="陈秀英" DATE="2012-06-11" EDITION="Morning">
+        <HEADLINE>拥有名称最大怎么.</HEADLINE>
+        <BYLINE>张楠, 科研</BYLINE>
+        <LEAD>工程关系来自生活.一直重要程序.可以图片一下不要.数据网站发布地方登录.</LEAD>
+        <BODY>感觉谢谢这么因为操作.计划价格一种.基本时间都是现在积分.这些设备有限要求任何.</BODY>
+        <NOTES>&COPYRIGHT; 单位在线只要.文件电子类别企业网站帖子系统.研究功能论坛来自开始.什么支持以及一下.</NOTES>
+    </ARTICLE>
+    <ARTICLE AUTHOR="宫欢" EDITOR="马勇" DATE="1982-10-04" EDITION="Evening">
+        <HEADLINE>解决需要相关以上空间帖子.</HEADLINE>
+        <BYLINE>宫欢, 其他</BYLINE>
+        <LEAD>北京不能加入项目.设备拥有的话首页方式任何.</LEAD>
+        <BODY>来源简介人员选择这个.城市参加已经发表有限不是.报告合作简介如果公司国际或者制作.之后大小说明.</BODY>
+        <NOTES>&COPYRIGHT; 处理这样政府因为帮助简介的是因为.大学信息更新为什.一定提高是一那些为了她的经营.</NOTES>
+    </ARTICLE>
+    <ARTICLE AUTHOR="崔波" EDITOR="汤莹" DATE="2009-02-10" EDITION="Morning">
+        <HEADLINE>这种资料无法.</HEADLINE>
+        <BYLINE>崔波, 售前/售后技术支持经理</BYLINE>
+        <LEAD>价格控制浏览控制.当前位置以及内容.拥有功能孩子能力威望系列.</LEAD>
+        <BODY>的话联系觉得.的话其中作为名称经济一次而且.系列不是一个.网站他的为了首页说明.进入开始知道一般.</BODY>
+        <NOTES>&COPYRIGHT; 次数为什作者提供.男人最后时候公司谢谢以及标题.研究应该一切帖子历史控制价格.文章我的经济地方.</NOTES>
+    </ARTICLE>
+    <ARTICLE AUTHOR="刘璐" EDITOR="李秀华" DATE="1995-09-05" EDITION="Evening">
+        <HEADLINE>您的不是如果支持次数影响日期.</HEADLINE>
+        <BYLINE>刘璐, 建筑项目助理</BYLINE>
+        <LEAD>无法成为更多部分中国.只要建设科技产品.我们在线下载更新有关提供这些过程.</LEAD>
+        <BODY>我们一样为了谢谢今天.这样一些搜索大学.中国包括有关工程直接准备.</BODY>
+        <NOTES>&COPYRIGHT; 全部可能然后质量方式社区以后.重要公司企业不过中心可是工作.学习最新游戏进行是否解决工程.</NOTES>
+    </ARTICLE>
+</NEWSPAPER>
