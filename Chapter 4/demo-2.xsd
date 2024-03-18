@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="PRODUCTDATA">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="PRODUCT" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="PRODUCTNAME" type="xs:string"/>
+                            <xs:element name="DESCRIPTION" type="xs:string"/>
+                            <xs:element name="PRICE" type="xs:decimal"/>
+                            <xs:element name="QUANTITY" type="xs:nonNegativeInteger"/>
+                        </xs:sequence>
+                        <xs:attribute name="PRODID" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="P\d{3}"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="CATEGORY" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="toy"/>
+                                    <xs:enumeration value="book"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.org/IPO"
+           xmlns:ipo="http://www.example.org/IPO"
+           elementFormDefault="qualified">
+
+    <xs:element name="PURCHASEORDER" type="ipo:PurchaseOrderType"/>
+
+    <xs:complexType name="PurchaseOrderType">
+        <xs:sequence>
+            <xs:element name="ORDER" type="ipo:OrderType"/>
+        </xs:sequence>
+        <xs:attribute name="PRODID" type="xs:string" use="required"/>
+        <xs:attribute name="ORDERID" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="OrderType">
+        <xs:sequence>
+            <xs:element name="DATE" type="xs:date"/>
+            <xs:element name="PRODUCTNAME" type="xs:string"/>
+            <xs:element name="SUPPLIERNAME" type="xs:string"/>
+            <xs:element name="ADDRESS" type="xs:string"/>
+            <xs:element name="QUANTITY" type="xs:integer"/>
+            <xs:element name="PRICEPERQTY" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
