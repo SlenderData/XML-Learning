@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ipo:PURCHASEORDER xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xmlns:ipo="http://www.example.org/IPO"
-                   xsi:schemaLocation="http://www.example.org/IPO demo-3.xsd"
+                   xsi:noNamespaceSchemaLocation="demo-3.xsd"
                    PRODID="P001" ORDERID="O001">
     <ORDER>
         <DATE>2000-02-13</DATE>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="PRODUCTDATA">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="PRODUCT" minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="PRODUCT" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="PRODUCTNAME" type="xs:string"/>
