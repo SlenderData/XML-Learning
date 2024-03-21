@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="demo-2.css"?>
 <PRODUCTDATA>
     <PRODUCT PRODID="p001" CATEGORY="Toy">
         <PRODUCTNAME>Mini Bus</PRODUCTNAME>

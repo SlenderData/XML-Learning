@@ -1,0 +1,16 @@
+PRODUCT {
+    display: block;
+    margin: 20px;
+}
+
+PRODUCT > * {
+    display: block;
+    color: green;
+    font-size: 1.2em;
+}
+
+PRODUCTNAME {
+    color: red;
+    font-weight: bold;
+    font-size: 1.5em;
+}
