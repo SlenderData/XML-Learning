@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="demo-2.xsl"?>
+<website xmlns:xlink="http://www.w3.org/1999/xlink">
+    <goto xlink:type="simple"
+          xlink:href="https://www.sina.com.cn"
+          xlink:title="新浪"
+          xlink:show="new"
+          xlink:actuate="onRequest">
+        这是一个简单链接
+    </goto>
+</website>

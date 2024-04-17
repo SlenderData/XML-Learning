@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="demo-1.xsl"?>
+<website xmlns:xlink="http://www.w3.org/1999/xlink">
+    <goto xlink:type="simple"
+          xlink:href="https://www.baidu.com"
+          xlink:title="百度"
+          xlink:show="replace"
+          xlink:actuate="onLoad">
+        这是一个简单链接
+    </goto>
+</website>
