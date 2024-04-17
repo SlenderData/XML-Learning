@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bookstore>
+    <book id="1">
+        <title>追风筝的人</title>
+        <author>卡勒德·胡赛尼</author>
+        <publisher>上海人民出版社</publisher>
+        <isbn>9787208061644</isbn>
+    </book>
+    <book id="2">
+        <title>解忧杂货店</title>
+        <author>东野圭吾</author>
+        <publisher>南海出版公司</publisher>
+        <isbn>9787544270878</isbn>
+    </book>
+    <book id="3">
+        <title>白夜行</title>
+        <author>东野圭吾</author>
+        <publisher>南海出版公司</publisher>
+        <isbn>9787544258609</isbn>
+    </book>
+    <book id="4">
+        <title>月亮和六便士</title>
+        <author>毛姆</author>
+        <publisher>上海译文出版社</publisher>
+        <isbn>9787532734030</isbn>
+    </book>
+    <book id="5">
+        <title>简爱</title>
+        <author>夏洛蒂·勃朗特</author>
+        <publisher>人民文学出版社</publisher>
+        <isbn>9787020010264</isbn>
+    </book>
+</bookstore>
