@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <books xmlns:xlink="http://www.w3.org/1999/xlink">
     <book xlink:type="simple"
-          xlink:href="demo-3-bookstore.xml#3">
+          xlink:href="demo-3-bookstore.xml#xpointer(/bookstore/book[@id='1'])">
+<!--      xlink:href="demo-3-bookstore.xml#xpointer(id('3'))"-->
+<!--      xlink:href="demo-3-bookstore.xml#3"-->
     </book>
 </books>
