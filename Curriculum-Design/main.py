@@ -12,13 +12,10 @@ def get_dpi_scale():
     if platform.system() == "Windows":
         import ctypes
         user32 = ctypes.windll.user32
-        user32.SetProcessDPIAware()
-        dpi = user32.GetSystemMetrics(88)
-        return dpi / 96  # 默认 DPI 为 96
-    elif platform.system() == "Darwin":  # MacOS
-        return 2  # Common scale factor for macOS (Retina display, etc.)
+        scale = user32.GetDpiForSystem()
+        return scale / 96
     else:
-        return 1.5  # Default scale for other OSes like Linux
+        return 1  # Default scale
 
 
 def get_scaled_font(size):
@@ -75,9 +72,14 @@ def add_contact():
             messagebox.showerror("错误", "姓名和电话不能为空")
 
     def open_file_dialog():
-        filepath = filedialog.askopenfilename(filetypes=[("Image files", "*.png;*.jpg;*.jpeg")])
-        if filepath:
-            image_path.set(filepath)
+        # 定义文件类型
+        file_types = [("Image Files", "*.png *.jpg *.jpeg"), ("All Files", "*.*")]
+        try:
+            filepath = filedialog.askopenfilename(title="Select a file", filetypes=file_types)
+            if filepath:
+                image_path.set(filepath)
+        except Exception as e:
+            messagebox.showerror("File Open Error", "Error opening file dialog: " + str(e))
 
     add_win = Toplevel(main)
     add_win.title("添加联系人")
