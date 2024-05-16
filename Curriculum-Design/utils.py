@@ -1,30 +1,31 @@
-import xml.etree.ElementTree as ET
 import base64
-from PIL import Image
+from PIL import Image, ImageOps
 import io
-
-def save_xml_tree(tree, file):
-    tree.write(file, encoding="utf-8", xml_declaration=True)
+import requests
+import xml.etree.ElementTree as ET
 
 def encode_photo_to_base64(photo_path):
-    # 打开图片文件
     with Image.open(photo_path) as img:
-        # 裁剪成正方形
-        width, height = img.size
-        min_side = min(width, height)
-        left = (width - min_side) / 2
-        top = (height - min_side) / 2
-        right = (width + min_side) / 2
-        bottom = (height + min_side) / 2
-        img = img.crop((left, top, right, bottom))
-        # 调整分辨率为 64x64
-        img = img.resize((64, 64), Image.LANCZOS)
-        # 将图片编码为 base64
+        img = crop_and_resize_image(img)
         buffered = io.BytesIO()
         img.save(buffered, format="PNG")
-        return base64.b64encode(buffered.getvalue()).decode("utf-8")
+        return base64.b64encode(buffered.getvalue()).decode()
 
-def decode_photo_from_base64(encoded_photo, output_path):
-    img_data = base64.b64decode(encoded_photo)
-    with open(output_path, "wb") as output_file:
-        output_file.write(img_data)
+def crop_and_resize_image(img):
+    # Crop the image to a square and resize to 64x64
+    img = ImageOps.fit(img, (64, 64), Image.LANCZOS)
+    return img
+
+def fetch_random_photo():
+    url = 'https://www.thispersondoesnotexist.com/'
+    response = requests.get(url)
+    if response.status_code == 200:
+        img = Image.open(io.BytesIO(response.content))
+        img_path = 'random_photo.png'
+        img.save(img_path)
+        return img_path
+    else:
+        raise Exception("Failed to fetch random photo")
+
+def save_xml_tree(tree, file_path):
+    tree.write(file_path, encoding="utf-8", xml_declaration=True)

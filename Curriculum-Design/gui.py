@@ -3,8 +3,12 @@ from tkinter import messagebox, filedialog
 from PIL import Image, ImageTk
 from contact import ContactManager
 from user import UserManager
+from utils import encode_photo_to_base64, fetch_random_photo
 import base64
 import io
+from faker import Faker
+
+fake = Faker(locale='zh_CN')
 
 class ContactManagerApp(tk.Tk):
     def __init__(self):
@@ -101,6 +105,9 @@ class ContactManagerApp(tk.Tk):
         self.photo_button = tk.Button(self, text="浏览", command=self.browse_photo)
         self.photo_button.pack()
 
+        self.random_button = tk.Button(self, text="随机生成", command=self.generate_random_contact)
+        self.random_button.pack()
+
         self.save_button = tk.Button(self, text="保存", command=self.save_contact)
         self.save_button.pack()
 
@@ -108,16 +115,46 @@ class ContactManagerApp(tk.Tk):
         self.back_button.pack()
 
     def browse_photo(self):
-        file_path = filedialog.askopenfilename(filetypes=[("图片文件", "*.jpg;*.jpeg;*.png")])
-        self.photo_path.set(file_path)
+        self.after(100, self.open_file_dialog)
+
+    def open_file_dialog(self):
+        try:
+            file_path = filedialog.askopenfilename(filetypes=[("JPEG files", "*.jpg;*.jpeg"), ("PNG files", "*.png")])
+            if file_path:
+                self.photo_path.set(file_path)
+            else:
+                print("No file selected")
+        except Exception as e:
+            print(f"Error selecting file: {e}")
+
+    def generate_random_contact(self):
+        self.name_entry.delete(0, tk.END)
+        self.name_entry.insert(0, fake.name())
+
+        self.phone_entry.delete(0, tk.END)
+        self.phone_entry.insert(0, fake.phone_number())
+
+        try:
+            photo_path = fetch_random_photo()
+            self.photo_path.set(photo_path)
+        except Exception as e:
+            print(f"Error fetching random photo: {e}")
+            messagebox.showerror("错误", "无法获取随机照片")
 
     def save_contact(self):
         name = self.name_entry.get()
         phone = self.phone_entry.get()
         photo = self.photo_path.get() if self.photo_path.get() else None
-        self.contact_manager.add_contact(self.current_user, name, phone, photo)
-        messagebox.showinfo("成功", "联系人添加成功")
-        self.create_main_widgets()
+        try:
+            self.contact_manager.add_contact(self.current_user, name, phone, photo)
+            messagebox.showinfo("成功", "联系人添加成功")
+            self.create_main_widgets()
+        except FileNotFoundError as fnf_error:
+            print(f"FileNotFoundError: {fnf_error}")
+            messagebox.showerror("错误", "文件未找到，请选择有效的图片文件")
+        except Exception as e:
+            print(f"Error: {e}")
+            messagebox.showerror("错误", "添加联系人时发生错误")
 
     def view_contacts(self):
         self.clear_widgets()
@@ -191,9 +228,16 @@ class ContactManagerApp(tk.Tk):
         name = self.name_entry.get()
         phone = self.phone_entry.get()
         photo = self.photo_path.get() if self.photo_path.get() else None
-        self.contact_manager.update_contact(contact_id, name, phone, photo)
-        messagebox.showinfo("成功", "联系人信息更新成功")
-        self.view_contacts()
+        try:
+            self.contact_manager.update_contact(contact_id, name, phone, photo)
+            messagebox.showinfo("成功", "联系人信息更新成功")
+            self.view_contacts()
+        except FileNotFoundError as fnf_error:
+            print(f"FileNotFoundError: {fnf_error}")
+            messagebox.showerror("错误", "文件未找到，请选择有效的图片文件")
+        except Exception as e:
+            print(f"Error: {e}")
+            messagebox.showerror("错误", "更新联系人时发生错误")
 
     def delete_contact(self, contact):
         self.contact_manager.delete_contact(contact['id'])
@@ -256,3 +300,4 @@ class ContactManagerApp(tk.Tk):
     def clear_widgets(self):
         for widget in self.winfo_children():
             widget.destroy()
+
