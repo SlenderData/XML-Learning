@@ -1,9 +1,9 @@
 import tkinter as tk
-from tkinter import messagebox, filedialog
+from tkinter import messagebox, filedialog, font
 from PIL import Image, ImageTk
 from contact import ContactManager
 from user import UserManager
-from utils import encode_photo_to_base64, fetch_random_photo
+from utils import fetch_random_photo
 import base64
 import io
 from faker import Faker
@@ -14,7 +14,14 @@ class ContactManagerApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("通讯录管理系统")
-        self.geometry("600x400")  # 增加窗口宽度以适应三列布局
+        self.geometry("800x600")
+        self.minsize(800, 600)
+        self.resizable(True, True)  # 允许用户调整窗口大小
+
+        # 设置全局字体大小
+        default_font = font.nametofont("TkDefaultFont")
+        default_font.configure(size=10)
+        self.option_add("*Font", default_font)
 
         self.user_manager = UserManager()
         self.contact_manager = ContactManager()
@@ -159,34 +166,27 @@ class ContactManagerApp(tk.Tk):
     def view_contacts(self):
         self.clear_widgets()
 
+        # 创建一个Frame容器以包含Canvas和滚动条
+        container = tk.Frame(self)
+        container.pack(fill=tk.BOTH, expand=True)
+
+        # 创建一个Canvas以在其上绘制联系人信息
+        canvas = tk.Canvas(container)
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        # 创建滚动条并将其配置为滚动Canvas
+        scrollbar = tk.Scrollbar(container, orient=tk.VERTICAL, command=canvas.yview)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        # 创建一个Frame作为Canvas的内容
+        contact_frame = tk.Frame(canvas)
+        canvas.create_window((0, 0), window=contact_frame, anchor="nw")
+
         contacts = self.contact_manager.get_contacts(self.current_user)
-        for i, contact in enumerate(contacts):
-            contact_frame = tk.Frame(self)
-            contact_frame.pack(fill=tk.X, padx=10, pady=5)
-
-            if contact['photo']:
-                img_data = base64.b64decode(contact['photo'])
-                img = Image.open(io.BytesIO(img_data))
-                img.thumbnail((50, 50))
-                img_tk = ImageTk.PhotoImage(img)
-                photo_label = tk.Label(contact_frame, image=img_tk)
-                photo_label.image = img_tk
-            else:
-                photo_label = tk.Label(contact_frame, text="无照片")
-
-            photo_label.grid(row=i, column=0, padx=10, pady=5, sticky='w')
-
-            name_label = tk.Label(contact_frame, text=contact['name'])
-            name_label.grid(row=i, column=1, padx=10, pady=5, sticky='w')
-
-            phone_label = tk.Label(contact_frame, text=contact['phone'])
-            phone_label.grid(row=i, column=2, padx=10, pady=5, sticky='w')
-
-            edit_button = tk.Button(contact_frame, text="编辑", command=lambda c=contact: self.edit_contact(c))
-            edit_button.grid(row=i, column=3, padx=10, pady=5, sticky='e')
-
-            delete_button = tk.Button(contact_frame, text="删除", command=lambda c=contact: self.delete_contact(c))
-            delete_button.grid(row=i, column=4, padx=10, pady=5, sticky='e')
+        self.populate_contacts(contact_frame, contacts)
+        contact_frame.update_idletasks()
+        canvas.config(scrollregion=canvas.bbox("all"))
 
         self.back_button = tk.Button(self, text="返回", command=self.create_main_widgets)
         self.back_button.pack(pady=10)
@@ -218,13 +218,13 @@ class ContactManagerApp(tk.Tk):
         self.photo_button = tk.Button(self, text="浏览", command=self.browse_photo)
         self.photo_button.pack()
 
-        self.save_button = tk.Button(self, text="保存", command=lambda: self.save_edited_contact(contact['id']))
+        self.save_button = tk.Button(self, text="保存", command=lambda: self.update_contact(contact['id']))
         self.save_button.pack()
 
-        self.back_button = tk.Button(self, text="返回", command=self.view_contacts)
+        self.back_button = tk.Button(self, text="返回", command=self.create_main_widgets)
         self.back_button.pack()
 
-    def save_edited_contact(self, contact_id):
+    def update_contact(self, contact_id):
         name = self.name_entry.get()
         phone = self.phone_entry.get()
         photo = self.photo_path.get() if self.photo_path.get() else None
@@ -265,39 +265,57 @@ class ContactManagerApp(tk.Tk):
         self.display_contacts(contacts)
 
     def display_contacts(self, contacts):
-        for widget in self.winfo_children():
-            if isinstance(widget, tk.Frame):
-                widget.destroy()
+        self.clear_widgets()
 
+        container = tk.Frame(self)
+        container.pack(fill=tk.BOTH, expand=True)
+
+        canvas = tk.Canvas(container)
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        scrollbar = tk.Scrollbar(container, orient=tk.VERTICAL, command=canvas.yview)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        contact_frame = tk.Frame(canvas)
+        canvas.create_window((0, 0), window=contact_frame, anchor="nw")
+
+        self.populate_contacts(contact_frame, contacts)
+        contact_frame.update_idletasks()
+        canvas.config(scrollregion=canvas.bbox("all"))
+
+        self.back_button = tk.Button(self, text="返回", command=self.create_main_widgets)
+        self.back_button.pack(pady=10)
+
+    def populate_contacts(self, parent_frame, contacts):
         for i, contact in enumerate(contacts):
-            contact_frame = tk.Frame(self)
-            contact_frame.pack(fill=tk.X, padx=10, pady=5)
+            row_frame = tk.Frame(parent_frame)
+            row_frame.grid(row=i, column=0, sticky="w", padx=10, pady=5)
 
             if contact['photo']:
                 img_data = base64.b64decode(contact['photo'])
                 img = Image.open(io.BytesIO(img_data))
                 img.thumbnail((50, 50))
                 img_tk = ImageTk.PhotoImage(img)
-                photo_label = tk.Label(contact_frame, image=img_tk)
+                photo_label = tk.Label(row_frame, image=img_tk)
                 photo_label.image = img_tk
             else:
-                photo_label = tk.Label(contact_frame, text="无照片")
+                photo_label = tk.Label(row_frame, text="无照片")
 
-            photo_label.grid(row=i, column=0, padx=10, pady=5, sticky='w')
+            photo_label.grid(row=0, column=0, padx=10, pady=5, sticky='w')
 
-            name_label = tk.Label(contact_frame, text=contact['name'])
-            name_label.grid(row=i, column=1, padx=10, pady=5, sticky='w')
+            name_label = tk.Label(row_frame, text=contact['name'])
+            name_label.grid(row=0, column=1, padx=10, pady=5, sticky='w')
 
-            phone_label = tk.Label(contact_frame, text=contact['phone'])
-            phone_label.grid(row=i, column=2, padx=10, pady=5, sticky='w')
+            phone_label = tk.Label(row_frame, text=contact['phone'])
+            phone_label.grid(row=0, column=2, padx=10, pady=5, sticky='w')
 
-            edit_button = tk.Button(contact_frame, text="编辑", command=lambda c=contact: self.edit_contact(c))
-            edit_button.grid(row=i, column=3, padx=10, pady=5, sticky='e')
+            edit_button = tk.Button(row_frame, text="编辑", command=lambda c=contact: self.edit_contact(c))
+            edit_button.grid(row=0, column=3, padx=10, pady=5, sticky='e')
 
-            delete_button = tk.Button(contact_frame, text="删除", command=lambda c=contact: self.delete_contact(c))
-            delete_button.grid(row=i, column=4, padx=10, pady=5, sticky='e')
+            delete_button = tk.Button(row_frame, text="删除", command=lambda c=contact: self.delete_contact(c))
+            delete_button.grid(row=0, column=4, padx=10, pady=5, sticky='e')
 
     def clear_widgets(self):
         for widget in self.winfo_children():
             widget.destroy()
-

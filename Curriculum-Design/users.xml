@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<users>
+    <user>
+        <username>root</username>
+        <password>root</password>
+        <contacts>
+            <contact id="13d05cab-2a49-4e12-bf7a-27c6bc4b8eaa"/>
+            <contact id="6d807603-7b27-45f0-abc9-c235162fc6cb"/>
+        </contacts>
+    </user>
+    <user>
+        <username>1</username>
+        <password>1</password>
+        <contacts>
+            <contact id="073cd28a-f0fc-4afc-b889-1dcadef991c9"/>
+            <contact id="68663f73-8147-4bcc-9526-8074082f5671"/>
+            <contact id="85deb4c0-e54a-4b1e-8c6b-13a2ed59c06b"/>
+            <contact id="b194aac5-5fcc-4899-b31a-38d28f6d752b"/>
+            <contact id="315407e5-7ac4-4d35-8a9c-d42e09c4f090"/>
+            <contact id="1fa12865-3eb9-4e31-a63d-fb9ec0543765"/>
+            <contact id="f9368b86-8eec-48c6-af91-b69e8ccbd071"/>
+        </contacts>
+    </user>
+    <user>
+        <username>2</username>
+        <password>2</password>
+        <contacts>
+            <contact id="03548d61-95a8-46cb-9184-5bc1e2dca10a"/>
+            <contact id="154af21d-56e9-421d-8cdf-d88bd1a5315a"/>
+            <contact id="7841c7cd-b223-438d-8787-03d23ee170e2"/>
+        </contacts>
+    </user>
+</users>

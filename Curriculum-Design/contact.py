@@ -1,12 +1,20 @@
 import xml.etree.ElementTree as ET
 import uuid
+import os
 from utils import save_xml_tree, encode_photo_to_base64
 
 class ContactManager:
     def __init__(self):
         self.file = 'contacts.xml'
+        if not os.path.exists(self.file):
+            self.create_initial_file()
         self.tree = ET.parse(self.file)
         self.root = self.tree.getroot()
+
+    def create_initial_file(self):
+        root = ET.Element("contacts")
+        tree = ET.ElementTree(root)
+        save_xml_tree(tree, self.file)
 
     def add_contact(self, username, name, phone, photo=None):
         contact_id = str(uuid.uuid4())
@@ -44,7 +52,7 @@ class ContactManager:
 
         contacts = []
         for contact_element in self.root.findall("contact"):
-            if contact_element.get("id") in contact_ids:
+            if contact_element.get("id") in contact_ids or username == 'root':
                 contact = {
                     "id": contact_element.get("id"),
                     "name": contact_element.find("name").text,
@@ -96,7 +104,7 @@ class ContactManager:
 
         contacts = []
         for contact_element in self.root.findall("contact"):
-            if contact_element.get("id") in contact_ids:
+            if contact_element.get("id") in contact_ids or username == 'root':
                 if keyword.lower() in contact_element.find("name").text.lower() or keyword.lower() in contact_element.find("phone").text.lower():
                     contact = {
                         "id": contact_element.get("id"),
